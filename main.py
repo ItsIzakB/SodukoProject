@@ -11,10 +11,15 @@ functions.configure_window(window)
 entries = functions.create_labels_in_grid(window, 9, 9)
 first_entry = window.grid_slaves(row=0, column=0)[0]
 
-button = tkinter.Button(window,
-                        text="Retrieve Info",
-                        command= lambda entry=first_entry: functions.retrieve_info(entry))
+
+#Debug tool: to check what the value of an entry box is
+# button = tkinter.Button(window,
+#                         text="Retrieve Info",
+#                         command= lambda entry=first_entry: functions.retrieve_info(entry))
+# button.grid()
+functions.add_bars(window)
 
 
-button.grid()
+
+
 window.mainloop()

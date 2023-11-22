@@ -1,5 +1,6 @@
 from tkinter import *
 import numpy as np
+import tkinter as tk
 
 
 def retrieve_info(entry):
@@ -30,7 +31,7 @@ def create_empty_matrix(rows, columns):
 
 
 def configure_window(window):
-    window.geometry("720x720")
+    window.geometry("600x600")
     window.title("Soduko Game")
     window.config(background='#fce1bd')
     window.resizable(0, 0)
@@ -47,11 +48,21 @@ def create_labels_in_grid(window, num_rows, num_columns):
                            fg='black',
                            bg='white',
                            relief='solid',
-                           bd='2',
-                           width=2)
-            square.grid(row=row, column=column)
+                           bd='1',
+                           width=2,
+                           cursor='dot',
+                           justify="center")
+            square.grid(row=row, column=column, sticky= tk.E)
             #This is used to make sure input is only single-digit numbers or '\b'
             reg = window.register(validate_input)
             square.config(validate="key", validatecommand=(reg, '%S', '%P'))
 
+
+
+
+
     return entries
+
+def add_bars(window):
+    top_bar = tk.Frame(window, height=5, width=window.winfo_reqwidth(), bg="black")
+    top_bar.grid(row=0, column=0, columnspan=14)
